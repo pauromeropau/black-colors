@@ -1,18 +1,8 @@
 window.onload = function() {
   document.getElementById("start-button").onclick = function() {
     function displayHome() {
-      var x = document.getElementById("home");
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
-      }
-      // var y = document.getElementById("game-board");
-      // if (y.style.display === "none") {
-      //   y.style.display = "none";
-      // } else {
-      //   y.style.display = "block";
-      // }
+      document.getElementById("home").style.display = "none";
+      document.getElementById("game-board").style.display = "grid";
     }
     displayHome();
     startGame();
@@ -34,16 +24,13 @@ window.onload = function() {
     //   setCanvasDimensions();
     //   grid();
     // }, 1000 / 60);
-  
+
     grid();
 
     // function setCanvasDimensions() {
     //   myCanvasDOMEl.setAttribute("width", `${w}px`);
     //   myCanvasDOMEl.setAttribute("height", `${h}px`);
     // }
-    function counter(){
-    console.log(divDOMEl.className = "counter");
-    }
 
     function grid() {
       const randomColor = true;
@@ -54,26 +41,29 @@ window.onload = function() {
       const bodyDOMEl = document.querySelector("#grids");
       const colorScale = [];
 
-      new Array(81).fill().forEach(
-        (x, idx) => {
-          let divDOMEl = document.createElement("div");
+      const gridsArr = new Array(36).fill().map(
+        (item, idx) => {
+          // let divDOMEl = document.createElement("div");
           divDOMEl.className = "grid";
+          divDOMEl.setAttribute("id", `item-${idx + 1}`);
           divDOMEl.style.backgroundColor =
             colorScale[randomInt(0, colorScale.length - 1)];
           if (randomColor) {
             let colorScale = d3
               .scaleLinear()
               .domain([0, 5])
-              .range(["rgba(137, 196, 244, 1)", "rgba(107, 185, 240, 1)"]);
+              .range(["#f1a9a0", "#e08283"]);
             divDOMEl.style.backgroundColor = `${colorScale(idx)}`;
-            //rgba(137, 196, 244, 1)
-            //rgba(107, 185, 240, 1)
+            //#f1a9a0 rojo
+            //#e08283 rojo
           }
           //barajar
-          bodyDOMEl.appendChild(divDOMEl);
-          console.log(bodyDOMEl.appendChild(divDOMEl));
+          // bodyDOMEl.appendChild(divDOMEl);
+          item = divDOMEl
 
           bodyDOMEl.appendChild(divDOMEl).onclick = function() {
+            //         this.style.backgroundColor = this.style.backgroundColor === 'blue' ?
+            // 'red' : 'blue';
             this.className = "clicked";
           };
         }
@@ -82,6 +72,7 @@ window.onload = function() {
         // };
         // divDOMEl.document
       );
+      console.log(gridsArr);
     }
   }
 };

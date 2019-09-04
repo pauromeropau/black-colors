@@ -4,11 +4,8 @@
 body {
   margin: 10vpx;
   font-family: "Lexend Deca", sans-serif;
-  font-size: 40px;
-  display: grid;
   width: 100vw;
   height: 100vh;
-  grid-template-columns: repeat(2, 1fr);
 }
 h1 {
   font-size: 80px;
@@ -48,7 +45,6 @@ h1 a {
   );
   -webkit-background-clip: text;
 }
-
 #start-home {
   margin-top: 40px;
   display: flex;
@@ -71,40 +67,44 @@ h1 a {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 #game-board {
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
+  grid-template-columns: repeat(2, 1fr);
   width: 100vw;
+}
+#game-board-grid {
+  padding: 100px;
 }
 #myCanvas {
   border: 3px solid black;
 }
-/*#square {
-  border: 3px solid black;
-  height: 50px;
-  width: 50px;
-} */
 
 #grids {
-  padding: 20px;
-  padding-top: 40px;
+  width: 40vw;
+  /* padding: 20px; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, 10%);
+  align-content: center;
+  justify-content: center;
+  grid-template-columns: repeat(6, 10%);
   grid-auto-rows: 70px;
-  grid-gap: 1px;
-  width: 50vw;
 }
-
 .grid {
-  box-shadow: 17px 12px 24px -21px rgba(0, 0, 0, 0.57);
   transition: all 0.3s;
 }
-
 .clicked {
   transform: scale(1.1);
 }
-
-/* #counter {
-  padding: 20px;
-  padding-top: 40px;
-} */
+#counter {
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+  margin: 40px;
+  height: 100px;
+  width: 150px;
+  box-shadow: 5px 6px 12px -9px rgba(0, 0, 0, 0.75);
+  padding: 5px;
+  font-size: 20px;
+  color: rgba(43, 41, 41, 0.598);
+}
+#counterNum {
+  font-size: 15px;
+  color: rgba(43, 41, 41, 0.598);
+}
