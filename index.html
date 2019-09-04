@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script type="text/javascript" src="./main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.11.0/d3.js"></script>
     <link
       rel="stylesheet"
@@ -23,10 +22,22 @@
       <div id="start-home"><button id="start-button">Start</button></div>
     </div>
     <div style="display:none" id="game-board">
-      <section id="counter">Moves<br /><span id="counterNum">100</span></section>
+      <section id="counter">
+        <span id="counterText"><p>Moves</p></span
+        ><span id="counterNum"> <p>100</p></span>
+      </section>
       <div id="game-board-grid">
-      <section id="grids"></section>
-     </div>
+        <section id="grids"></section>
+        <section id="stop-buttons">
+          <div><button id="reset-button">Reset</button></div>
+          <div><button id="abort-button">Home</button></div>
+        </section>
+
+        <script>
+
+        </script>
+        <script type="text/javascript" src="./main.js"></script>
+      </div>
     </div>
   </body>
 </html>

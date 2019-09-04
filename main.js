@@ -9,70 +9,44 @@ window.onload = function() {
   };
 
   function startGame() {
-    // const myCanvasDOMEl = document.querySelector("#myCanvas");
-    // const ctx = myCanvasDOMEl.getContext("2d");
-    // const w = 1000;
-    // const h = 670;
-    // // const w2 = w / 2;
-    // // const h2 = h / 2;
-    // // const PI = Math.PI;
-    // // const PI_DOUBLE = Math.PI * 2;
-    // // const PI_HALF = Math.PI / 2;
+    const colors = num => {
+      let colorScale = d3
+        .scaleLinear()
+        .domain([0, 5])
+        .range(["#f1a9a0", "#e08283"]);
+      return colorScale(num);
+    };
 
-    // setInterval(() => {
-    //   ctx.clearRect(0, 0, w, h);
-    //   setCanvasDimensions();
-    //   grid();
-    // }, 1000 / 60);
+    let selected = [];
 
-    grid();
+    let gridsArr = new Array(36).fill("").map((e, i) => {
+      return `<div class="grid" id="item-${i}" style="background-color: ${colors(
+        i
+      )}"></div>`;
+    });
 
-    // function setCanvasDimensions() {
-    //   myCanvasDOMEl.setAttribute("width", `${w}px`);
-    //   myCanvasDOMEl.setAttribute("height", `${h}px`);
-    // }
-
-    function grid() {
-      const randomColor = true;
-      function randomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      }
-
-      const bodyDOMEl = document.querySelector("#grids");
-      const colorScale = [];
-
-      const gridsArr = new Array(36).fill().map(
-        (item, idx) => {
-          // let divDOMEl = document.createElement("div");
-          divDOMEl.className = "grid";
-          divDOMEl.setAttribute("id", `item-${idx + 1}`);
-          divDOMEl.style.backgroundColor =
-            colorScale[randomInt(0, colorScale.length - 1)];
-          if (randomColor) {
-            let colorScale = d3
-              .scaleLinear()
-              .domain([0, 5])
-              .range(["#f1a9a0", "#e08283"]);
-            divDOMEl.style.backgroundColor = `${colorScale(idx)}`;
-            //#f1a9a0 rojo
-            //#e08283 rojo
-          }
-          //barajar
-          // bodyDOMEl.appendChild(divDOMEl);
-          item = divDOMEl
-
-          bodyDOMEl.appendChild(divDOMEl).onclick = function() {
-            //         this.style.backgroundColor = this.style.backgroundColor === 'blue' ?
-            // 'red' : 'blue';
-            this.className = "clicked";
-          };
-        }
-        // divDOMEl.onmouseout = function() {
-        //   this.className = ""
-        // };
-        // divDOMEl.document
-      );
-      console.log(gridsArr);
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
     }
+
+    document.querySelector("#grids").innerHTML = gridsArr.join(" ");
+
+    setTimeout(() => {
+      gridsArr = shuffle(gridsArr);
+      document.querySelector("#grids").innerHTML = gridsArr.join(" ");
+      gridsArr.forEach((grid, i) => {
+        return (document.getElementById(`item-${i}`).onclick = e => {
+          if (selected.includes(e.toElement)) {
+            selected = selected.filter(elem => elem !== e.toElement);
+            e.toElement.classList.toggle("clickedGrid");
+            e.toElement.classList.toggle("grid");
+          } else if (selected.length < 2) {
+            selected.push(e.toElement);
+            e.toElement.classList.toggle("clickedGrid");
+            e.toElement.classList.toggle("grid");
+          }
+        });
+      });
+    }, 1000);
   }
 };
