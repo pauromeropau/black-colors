@@ -110,19 +110,37 @@ h1 a {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  height: 100px;
+  height: 185px;
   width: 150px;
   box-shadow: 5px 6px 12px -9px rgba(0, 0, 0, 0.75);
 }
 #counterText {
+  font-size: 18px;
+  color: rgba(57, 54, 54, 0.598);
+  margin: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}
+#counterNum {
+  margin: 5px;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 32px;
+  color: rgba(11, 10, 10, 0.598);
+}
+#levelText {
   font-size: 22px;
   color: rgba(57, 54, 54, 0.598);
   margin: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
 }
-#counterNum {
+#levelNum {
   margin: 5px;
   display: flex;
   align-content: center;

@@ -8,13 +8,6 @@ window.onload = function() {
       ["#89c4f4", "#3498db"],
       ["#ffcb05", "#f9b42d"]
     ];
-    //rojo
-    //
-    //
-    //
-    //
-    //
-    //
     return color[Math.floor(Math.random() * (5 - 0 + 1)) + 0];
   };
 
@@ -25,7 +18,6 @@ window.onload = function() {
     startGame(newColor);
   };
 
-
   function startGame(newColor) {
     const colors = num => {
       let colorScale = d3
@@ -35,16 +27,16 @@ window.onload = function() {
       return colorScale(num);
     };
     let selected = [];
-    let moves = 3;
+    let moves = 100;
     document.getElementById("counterNum").innerHTML = `<p>${moves}</p>`;
+    let level = 1;
+    document.getElementById("levelNum").innerHTML = `<p>${level}</p>`;
 
-    //**************************** ARRAY ORIGIN *********************************
     let gridsArr = new Array(36).fill("").map((e, i) => {
       return `<div class="grid" id="item-${i}#" style="background-color: ${colors(
         i
       )}"></div>`;
     });
-    //****************************************************************************
 
     const orderArr = [...gridsArr]; 
 
@@ -74,7 +66,7 @@ window.onload = function() {
         });
       });
     }, 100);
-    //**************************** ARRAY MOVED *********************************
+   
     function move(gridsArrSelect) {
       let position1;
       let position2;
@@ -102,9 +94,18 @@ window.onload = function() {
       if (moves <= 1) gameOver();
       else moves--;
       document.getElementById("counterNum").innerHTML = `<p>${moves}</p>`;
-      if(gridsArr.toString() === orderArr.toString()) console.log('win')
+
+      if(gridsArr.toString() === orderArr.toString()) {
+        level++;
+        gridsArr = [];
+        let newColor = randomColor();
+        startGame(newColor);
+        document.getElementById("levelNum").innerHTML = `<p>${level}</p>`;
+        console.log (level);
+      } 
       selected = [];
-    }
+    } 
+     
     function gameOver() {
       document.getElementById("home").style.display = "none";
       document.getElementById("game-board").style.display = "none";
@@ -114,11 +115,7 @@ window.onload = function() {
       gridsArr = [];
       startGame(newColor);
     };
-    //****************************************************************************
-
-    // if(arrayOrigin === arrayMoved){
-    //   return startGame();
-    // }
+  
     document.getElementById("abort-button").onclick = function() {
       gridsArr = [];
       document.getElementById("home").style.display = "grid";
