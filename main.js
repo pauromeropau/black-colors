@@ -6,6 +6,7 @@ window.onload = function() {
     }
     displayHome();
     startGame();
+    gameOver();
   };
 
   function startGame() {
@@ -20,10 +21,8 @@ window.onload = function() {
         .range(["#f1a9a0", "#e08283"]);
       return colorScale(num);
     };
-    let arrayOrigin = [];
-    let arrayMoved = [];
     let selected = [];
-    let moves = 100;
+    let moves = 3;
     document.getElementById("counterNum").innerHTML = `<p>${moves}</p>`;
 
     //**************************** ARRAY ORIGIN *********************************
@@ -85,17 +84,21 @@ window.onload = function() {
         gridsArr[position1]
       ]);
       document.querySelector("#grids").innerHTML = gridsArr.join(" ");
-      if (moves <= 1) backHome();
+      if (moves <= 1) gameOver();
       else moves--;
       document.getElementById("counterNum").innerHTML = `<p>${moves}</p>`;
       selected = [];
-    }
-
+    } 
     function backHome() {
       document.getElementById("home").style.display = "grid";
       document.getElementById("game-board").style.display = "none";
+    } 
+    function gameOver(){
+      document.getElementById("home").style.display = "none";
+      document.getElementById("game-board").style.display = "none";
+      document.getElementById("game-over-display").style.display = "flex";
     }
-    // arrayMoved
+ 
     //****************************************************************************
 
     // if(arrayOrigin === arrayMoved){
