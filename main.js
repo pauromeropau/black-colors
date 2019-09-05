@@ -1,24 +1,28 @@
 window.onload = function() {
-  document.getElementById("start-button").onclick = function() {
-    function displayHome() {
-      document.getElementById("home").style.display = "none";
-      document.getElementById("game-board").style.display = "grid";
-    }
-    displayHome();
-    startGame();
-    gameOver();
+  const randomColor = () => {
+    const color = [
+      ["#f1a9a0", "#e08283"],
+      ["#f1e7fe", "#aea8d3"],
+      ["#e4f1fe", "#c5eff7"],
+      ["#c8f7c5", "#86e2d5"]
+    ];
+    return color[Math.floor(Math.random() * (3 - 0 + 1)) + 0];
   };
 
-  function startGame() {
-    document.getElementById("abort-button").onclick = function() {
-      backHome();
-    };
+  document.getElementById("start-button").onclick = function() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("game-board").style.display = "grid";
+    let newColor = randomColor();
+    startGame(newColor);
+  };
 
+
+  function startGame(newColor) {
     const colors = num => {
       let colorScale = d3
         .scaleLinear()
         .domain([0, 5])
-        .range(["#f1a9a0", "#e08283"]);
+        .range(newColor);
       return colorScale(num);
     };
     let selected = [];
@@ -33,6 +37,8 @@ window.onload = function() {
     });
     //****************************************************************************
 
+    const orderArr = [...gridsArr]; 
+
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5);
     }
@@ -41,7 +47,7 @@ window.onload = function() {
     setTimeout(() => {
       gridsArr = shuffle(gridsArr);
       document.querySelector("#grids").innerHTML = gridsArr.join(" ");
-    }, 1000);
+    }, 800);
 
     setInterval(() => {
       gridsArr.forEach((grid, i) => {
@@ -87,25 +93,33 @@ window.onload = function() {
       if (moves <= 1) gameOver();
       else moves--;
       document.getElementById("counterNum").innerHTML = `<p>${moves}</p>`;
+      if(gridsArr.toString() === orderArr.toString()) console.log('win')
       selected = [];
-    } 
-    function backHome() {
-      document.getElementById("home").style.display = "grid";
-      document.getElementById("game-board").style.display = "none";
-    } 
-    function gameOver(){
+    }
+    function gameOver() {
       document.getElementById("home").style.display = "none";
       document.getElementById("game-board").style.display = "none";
       document.getElementById("game-over-display").style.display = "flex";
     }
- 
+    document.getElementById("reset-button").onclick = function() {
+      gridsArr = [];
+      startGame(newColor);
+    };
     //****************************************************************************
 
     // if(arrayOrigin === arrayMoved){
     //   return startGame();
     // }
+    document.getElementById("abort-button").onclick = function() {
+      gridsArr = [];
+      document.getElementById("home").style.display = "grid";
+      document.getElementById("game-board").style.display = "none";
+
+    };
+    document.getElementById("random-button").onclick = function() {
+      gridsArr = [];
+      let newColor = randomColor();
+      startGame(newColor);
+    };
   }
-  document.getElementById("reset-button").onclick = function() {
-    startGame();
-  };
 };
