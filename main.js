@@ -1,12 +1,21 @@
 window.onload = function() {
   const randomColor = () => {
     const color = [
-      ["#f1a9a0", "#e08283"],
-      ["#f1e7fe", "#aea8d3"],
+      ["#f1a9a0", "#e08283"], 
+      ["#ffcb05", "#f9690e"],
       ["#e4f1fe", "#c5eff7"],
-      ["#c8f7c5", "#86e2d5"]
+      ["#87d37c", "#26c281"], 
+      ["#89c4f4", "#3498db"],
+      ["#ffcb05", "#f9b42d"]
     ];
-    return color[Math.floor(Math.random() * (3 - 0 + 1)) + 0];
+    //rojo
+    //
+    //
+    //
+    //
+    //
+    //
+    return color[Math.floor(Math.random() * (5 - 0 + 1)) + 0];
   };
 
   document.getElementById("start-button").onclick = function() {
