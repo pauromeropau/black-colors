@@ -19,7 +19,11 @@ Un juego pensado para quien ama los colores, o incluso se dedica a ello.
 
 
 ## 4. Posibles mejoras
+Añadir más combinaciones de colores.
+Ampliar el grid cada nivel. 
+Disminuir la cantidad de movimientos cada nivel.
 
+TOP: Poder arrastrar las celdas en lugar del doble tap.
 
 ## 5. Me siento orgullosa...
 
