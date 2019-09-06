@@ -1,4 +1,6 @@
 # GAME: black&color
+Project 1 week 3 at Ironhack Madrid.
+
 ## 1. Intro
 
 ## 2. Instructions
