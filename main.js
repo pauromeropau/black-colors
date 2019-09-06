@@ -1,10 +1,10 @@
 window.onload = function() {
   const randomColor = () => {
     const color = [
-      ["#f1a9a0", "#e08283"], 
+      ["#f1a9a0", "#e08283"],
       ["#ffcb05", "#f9690e"],
       ["#e4f1fe", "#c5eff7"],
-      ["#87d37c", "#26c281"], 
+      ["#87d37c", "#26c281"],
       ["#89c4f4", "#3498db"],
       ["#ffcb05", "#f9b42d"]
     ];
@@ -15,10 +15,11 @@ window.onload = function() {
     document.getElementById("home").style.display = "none";
     document.getElementById("game-board").style.display = "grid";
     let newColor = randomColor();
-    startGame(newColor);
+    let level = 1;
+    startGame(newColor, level);
   };
 
-  function startGame(newColor) {
+  function startGame(newColor, level) {
     const colors = num => {
       let colorScale = d3
         .scaleLinear()
@@ -29,7 +30,6 @@ window.onload = function() {
     let selected = [];
     let moves = 100;
     document.getElementById("counterNum").innerHTML = `<p>${moves}</p>`;
-    let level = 1;
     document.getElementById("levelNum").innerHTML = `<p>${level}</p>`;
 
     let gridsArr = new Array(36).fill("").map((e, i) => {
@@ -38,7 +38,7 @@ window.onload = function() {
       )}"></div>`;
     });
 
-    const orderArr = [...gridsArr]; 
+    const orderArr = [...gridsArr];
 
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5);
@@ -66,7 +66,7 @@ window.onload = function() {
         });
       });
     }, 100);
-   
+
     function move(gridsArrSelect) {
       let position1;
       let position2;
@@ -95,17 +95,17 @@ window.onload = function() {
       else moves--;
       document.getElementById("counterNum").innerHTML = `<p>${moves}</p>`;
 
-      if(gridsArr.toString() === orderArr.toString()) {
+      if (gridsArr.toString() === orderArr.toString()) {
         level++;
         gridsArr = [];
         let newColor = randomColor();
-        startGame(newColor);
+        startGame(newColor, level);
         document.getElementById("levelNum").innerHTML = `<p>${level}</p>`;
-        console.log (level);
-      } 
+        console.log(level);
+      }
       selected = [];
-    } 
-     
+    }
+
     function gameOver() {
       document.getElementById("home").style.display = "none";
       document.getElementById("game-board").style.display = "none";
@@ -113,19 +113,18 @@ window.onload = function() {
     }
     document.getElementById("reset-button").onclick = function() {
       gridsArr = [];
-      startGame(newColor);
+      startGame(newColor, level);
     };
-  
+
     document.getElementById("abort-button").onclick = function() {
       gridsArr = [];
       document.getElementById("home").style.display = "grid";
       document.getElementById("game-board").style.display = "none";
-
     };
     document.getElementById("random-button").onclick = function() {
       gridsArr = [];
       let newColor = randomColor();
-      startGame(newColor);
+      startGame(newColor, level);
     };
   }
 };
