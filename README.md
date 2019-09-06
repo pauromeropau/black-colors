@@ -2,10 +2,18 @@
 Project 1 week 3 at Ironhack Madrid.
 
 ## 1. Intro
+Un juego pensado para quien ama los colores, o incluso se dedica a ello.
 
+## 2. Instrucciones
+###### Game board
 
-## 2. Instructions
+###### Movimientos
 
+###### Niveles
+
+###### Random
+
+###### Reset
 
 ## 3. Mi mayor reto...
 
@@ -19,8 +27,5 @@ Project 1 week 3 at Ironhack Madrid.
 ## 6. Si volviera a empezar...
 ~~Escogería otro juego~~
 
-###### The smallest heading
-
-
 [Link here](https://pauromeropau.github.io/black-colors/)
-*Paula Romero Armas.*
+
