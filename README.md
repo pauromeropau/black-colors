@@ -1,6 +1,7 @@
-# GAME: black&color.
+# GAME: *black&color.*
 ## Project 1 week 3 at Ironhack Madrid
-*Un juego pensado para quien ama los colores, o incluso, se dedica a ello. Enfocado como un entrenamiento de Color IQ (cociente intelectual de color).*
+*Un juego pensado para quien ama los colores, o incluso, se dedica a ello.*
+*Enfocado como un entrenamiento de Color IQ (cociente intelectual de color).*
 
 ## 🧩 Descripción
 ###### Game board
