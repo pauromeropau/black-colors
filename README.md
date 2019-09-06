@@ -15,5 +15,6 @@ Project 1 week 3 at Ironhack Madrid.
 
 ###### The smallest heading
 
+Link to the game [GitHub Pages](https://pauromeropau.github.io/black-colors/).
 
 *Paula Romero Armas.*
