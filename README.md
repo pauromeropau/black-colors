@@ -27,12 +27,10 @@ Este botón resetea los movimientos, es decir, vuelve al estado original de la c
 *NOTA: Al mismo tiempo que se crea la cuadrícula, se le asigna un id a cada celda (compuesto por una clase fija, un número de item de 0 a 35, un color aleatorio dentro del rango y una posición por defecto en la array). Se baraja y el jugador la ordena. Cada movimiento compara el id completo de cada celda de la cuadrícula actual con la original.*
 
 ## 🛠 Posibles mejoras
-Algunas cosas que me gustaría mejorar a corto plazo serían: 
 - Añadir más combinaciones de colores. 
 - Ampliar el grid en cada nivel. 
 - Disminuir la cantidad de movimientos en cada nivel.
 - RESPONSIVE!!
-...y a medio/largo plazo:
 - Poder arrastrar las celdas en lugar de hacer tap.
 
 ## 👏🏻 Me siento orgullosa...
